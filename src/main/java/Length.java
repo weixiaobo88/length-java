@@ -11,32 +11,33 @@ public class Length {
     }
 
     public Length as(String targetUnit) {
-        Length length = this;
+        double value = this.value;
+
         if (this.unit.equals(FOOT)) {
             if (targetUnit.equals(YARD)) {
-                length = new Length(this.value / 3, targetUnit);
+                value = this.value / 3;
             } else if (targetUnit.equals(INCH)) {
-                length = new Length(this.value * 12, targetUnit);
+                value = this.value * 12;
             }
         }
 
         if (this.unit.equals(YARD)) {
             if (targetUnit.equals(INCH)) {
-                length = new Length(this.value * 36, targetUnit);
+                value = this.value * 36;
             } else if (targetUnit.equals(FOOT)){
-                length = new Length(this.value * 3, targetUnit);
+                value = this.value * 3;
             }
         }
 
         if (this.unit.equals(INCH)) {
             if (targetUnit.equals(FOOT)) {
-                length = new Length(this.value / 12, targetUnit);
+                value = this.value / 12;
             } else if (targetUnit.equals(YARD)) {
-                length = new Length(this.value / 36, targetUnit);
+                value = this.value / 36;
             }
         }
 
-        return length;
+        return new Length(value, targetUnit);
     }
 
     public double getValue() {
