@@ -11,6 +11,10 @@ public class Length {
     }
 
     public Length as(String targetUnit) {
+        return new Length(getTargetValue(targetUnit), targetUnit);
+    }
+
+    private double getTargetValue(String targetUnit) {
         double value = this.value;
 
         if (this.unit.equals(FOOT)) {
@@ -37,7 +41,7 @@ public class Length {
             }
         }
 
-        return new Length(value, targetUnit);
+        return value;
     }
 
     public double getValue() {
