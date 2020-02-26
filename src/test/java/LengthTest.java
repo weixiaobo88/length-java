@@ -4,9 +4,6 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class LengthTest {
-    public static final String INCH = Length.INCH;
-    public static final String FOOT = Length.FOOT;
-    public static final String YARD = Length.YARD;
 
     @Test
     public void should_1_inch_equals_1_inch() {
