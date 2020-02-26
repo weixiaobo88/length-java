@@ -9,27 +9,34 @@ public class Length {
 
     public Length as(String unit) {
         Length length = this;
-        if (this.unit.equals("f")) {
-            if (unit.equals("yard")) {
-                length = new Length(this.value / 3, unit);
-            } else if (unit.equals("inch")) {
-                length = new Length(this.value * 12, unit);
+        String foot = "f";
+        String yard = "yard";
+        String inch = "inch";
+        int YARD_TO_FOOT = 3;
+        int FOOT_TO_INCH = 12;
+        int YARD_TO_INCH = 36;
+
+        if (this.unit.equals(foot)) {
+            if (unit.equals(yard)) {
+                length = new Length(this.value / YARD_TO_FOOT, unit);
+            } else if (unit.equals(inch)) {
+                length = new Length(this.value * FOOT_TO_INCH, unit);
             }
         }
 
-        if (this.unit.equals("yard")) {
-            if (unit.equals("inch")) {
-                length = new Length(this.value * 36, unit);
-            } else if (unit.equals("f")){
-                length = new Length(this.value * 3, unit);
+        if (this.unit.equals(yard)) {
+            if (unit.equals(inch)) {
+                length = new Length(this.value * YARD_TO_INCH, unit);
+            } else if (unit.equals(foot)){
+                length = new Length(this.value * YARD_TO_FOOT, unit);
             }
         }
 
-        if (this.unit.equals("inch")) {
-            if (unit.equals("f")) {
-                length = new Length(this.value / 12, unit);
-            } else if (unit.equals("yard")) {
-                length = new Length(this.value / 36, unit);
+        if (this.unit.equals(inch)) {
+            if (unit.equals(foot)) {
+                length = new Length(this.value / FOOT_TO_INCH, unit);
+            } else if (unit.equals(yard)) {
+                length = new Length(this.value / YARD_TO_INCH, unit);
             }
         }
 
