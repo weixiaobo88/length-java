@@ -22,6 +22,7 @@ public class Length {
             } else if (unit.equals(inch)) {
                 length = new Length(this.value * FOOT_TO_INCH, unit);
             }
+
         }
 
         if (this.unit.equals(yard)) {
