@@ -7,6 +7,9 @@ public class Length {
     private static final int YARD_TO_FOOT = 3;
     private static final int FOOT_TO_INCH = 12;
     private static final int YARD_TO_INCH = 36;
+    private double FOOT_TO_YARD = 1.0 / YARD_TO_FOOT;
+    private double INCH_TO_FOOT = 1.0 / FOOT_TO_INCH;
+    private double INCH_TO_YARD = 1.0 / YARD_TO_INCH;
 
     public Length(double value, String unit) {
         this.value = value;
@@ -18,7 +21,7 @@ public class Length {
 
         if (this.unit.equals(FOOT)) {
             if (unit.equals(YARD)) {
-                length = new Length(this.value / YARD_TO_FOOT, unit);
+                length = new Length(this.value * FOOT_TO_YARD, unit);
             } else if (unit.equals(INCH)) {
                 length = new Length(this.value * FOOT_TO_INCH, unit);
             }
@@ -35,9 +38,9 @@ public class Length {
 
         if (this.unit.equals(INCH)) {
             if (unit.equals(FOOT)) {
-                length = new Length(this.value / FOOT_TO_INCH, unit);
+                length = new Length(this.value * INCH_TO_FOOT, unit);
             } else if (unit.equals(YARD)) {
-                length = new Length(this.value / YARD_TO_INCH, unit);
+                length = new Length(this.value * INCH_TO_YARD, unit);
             }
         }
 
