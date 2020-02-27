@@ -6,10 +6,6 @@ public class Length {
     private final String unit;
     private Unit temp_unit;
 
-    public Length(double value, String unit) {
-        this(value, unit, getTargetUnit(unit));
-    }
-
     public Length(double value, String unit, Unit temp_unit) {
         this.value = value;
         this.unit = unit;
