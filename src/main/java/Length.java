@@ -1,49 +1,54 @@
 public class Length {
-    public static final String FOOT = "f";
-    public static final String YARD = "yard";
-    public static final String INCH = "inch";
     private final double value;
-    private final String unit;
+    private Unit unit;
 
-    public Length(double value, String unit) {
+    public Length(double value, Unit unit) {
         this.value = value;
         this.unit = unit;
     }
 
-    public Length as(String targetUnit) {
-        Length length = this;
-        if (this.unit.equals(FOOT)) {
-            if (targetUnit.equals(YARD)) {
-                length = new Length(this.value / 3, targetUnit);
-            } else if (targetUnit.equals(INCH)) {
-                length = new Length(this.value * 12, targetUnit);
+    public Length as_temp(Unit unit) {
+        return new Length(calculateValue(unit), unit);
+    }
+
+    private double calculateValue(Unit unit) {
+        double value = this.value;
+
+        if (this.unit == Unit.FOOT) {
+            if (unit == Unit.YARD) {
+                return this.value / 3;
+            }
+            if (unit == Unit.INCH) {
+                return this.value * 12;
             }
         }
 
-        if (this.unit.equals(YARD)) {
-            if (targetUnit.equals(INCH)) {
-                length = new Length(this.value * 36, targetUnit);
-            } else if (targetUnit.equals(FOOT)){
-                length = new Length(this.value * 3, targetUnit);
+        if (this.unit == Unit.YARD) {
+            if (unit == Unit.INCH) {
+                return this.value * 36;
+            }
+            if (unit == Unit.FOOT){
+                return this.value * 3;
             }
         }
 
-        if (this.unit.equals(INCH)) {
-            if (targetUnit.equals(FOOT)) {
-                length = new Length(this.value / 12, targetUnit);
-            } else if (targetUnit.equals(YARD)) {
-                length = new Length(this.value / 36, targetUnit);
+        if (this.unit == Unit.INCH) {
+            if (unit == Unit.FOOT) {
+                return this.value / 12;
+            }
+            if (unit == Unit.YARD) {
+                return this.value / 36;
             }
         }
 
-        return length;
+        return value;
     }
 
     public double getValue() {
         return this.value;
     }
 
-    public String getUnit() {
-        return this.unit;
+    public Unit getUnit() {
+        return unit;
     }
 }
