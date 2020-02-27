@@ -14,7 +14,7 @@ public class Length {
 
     public Length as_temp(Unit temp_unit) {
         Length length = this;
-        if (this.unit.equals(FOOT)) {
+        if (this.temp_unit == Unit.FOOT) {
             if (temp_unit == Unit.YARD) {
                 length = new Length(this.value / 3, null, temp_unit);
             } else if (temp_unit == Unit.INCH) {
@@ -22,7 +22,7 @@ public class Length {
             }
         }
 
-        if (this.unit.equals(YARD)) {
+        if (this.temp_unit == Unit.YARD) {
             if (temp_unit == Unit.INCH) {
                 length = new Length(this.value * 36, null, temp_unit);
             } else if (temp_unit == Unit.FOOT) {
@@ -30,7 +30,7 @@ public class Length {
             }
         }
 
-        if (this.unit.equals(INCH)) {
+        if (this.temp_unit == Unit.INCH) {
             if (temp_unit == Unit.FOOT) {
                 length = new Length(this.value / 12, null, temp_unit);
             } else if (temp_unit == Unit.YARD) {
