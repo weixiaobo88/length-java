@@ -12,14 +12,6 @@ public class Length {
         this.temp_unit = temp_unit;
     }
 
-    public static Unit getTargetUnit(String targetUnit) {
-        Unit temp_unit = null;
-        if (targetUnit.equals(FOOT)) temp_unit = Unit.FOOT;
-        if (targetUnit.equals(YARD)) temp_unit = Unit.YARD;
-        if (targetUnit.equals(INCH)) temp_unit = Unit.INCH;
-        return temp_unit;
-    }
-
     public Length as_temp(Unit temp_unit) {
         Length length = this;
         if (this.unit.equals(FOOT)) {
