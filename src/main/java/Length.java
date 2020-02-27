@@ -11,24 +11,27 @@ public class Length {
     }
 
     public Length as(String targetUnit) {
-        Unit temp_unit = targetUnit.equals(FOOT) ? Unit.FOOT : null;
+        Unit temp_unit = null;
+        if (targetUnit.equals(FOOT)) temp_unit = Unit.FOOT;
+        if (targetUnit.equals(YARD)) temp_unit = Unit.YARD;
+        if (targetUnit.equals(INCH)) temp_unit = Unit.INCH;
         return as_temp(targetUnit, temp_unit);
     }
 
     public Length as_temp(String targetUnit, Unit temp_unit) {
         Length length = this;
         if (this.unit.equals(FOOT)) {
-            if (targetUnit.equals(YARD)) {
+            if (temp_unit == Unit.YARD) {
                 length = new Length(this.value / 3, targetUnit);
-            } else if (targetUnit.equals(INCH)) {
+            } else if (temp_unit == Unit.INCH) {
                 length = new Length(this.value * 12, targetUnit);
             }
         }
 
         if (this.unit.equals(YARD)) {
-            if (targetUnit.equals(INCH)) {
+            if (temp_unit == Unit.INCH) {
                 length = new Length(this.value * 36, targetUnit);
-            } else if (temp_unit == Unit.FOOT){
+            } else if (temp_unit == Unit.FOOT) {
                 length = new Length(this.value * 3, targetUnit);
             }
         }
@@ -36,7 +39,7 @@ public class Length {
         if (this.unit.equals(INCH)) {
             if (temp_unit == Unit.FOOT) {
                 length = new Length(this.value / 12, targetUnit);
-            } else if (targetUnit.equals(YARD)) {
+            } else if (temp_unit == Unit.YARD) {
                 length = new Length(this.value / 36, targetUnit);
             }
         }
