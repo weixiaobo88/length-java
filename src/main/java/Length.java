@@ -1,35 +1,35 @@
 public class Length {
     private final double value;
-    private Unit temp_unit;
+    private Unit unit;
 
-    public Length(double value, Unit temp_unit) {
+    public Length(double value, Unit unit) {
         this.value = value;
-        this.temp_unit = temp_unit;
+        this.unit = unit;
     }
 
-    public Length as_temp(Unit temp_unit) {
+    public Length as(Unit unit) {
         Length length = this;
-        if (this.temp_unit == Unit.FOOT) {
-            if (temp_unit == Unit.YARD) {
-                length = new Length(this.value / 3, temp_unit);
-            } else if (temp_unit == Unit.INCH) {
-                length = new Length(this.value * 12, temp_unit);
+        if (this.unit == Unit.FOOT) {
+            if (unit == Unit.YARD) {
+                length = new Length(this.value / 3, unit);
+            } else if (unit == Unit.INCH) {
+                length = new Length(this.value * 12, unit);
             }
         }
 
-        if (this.temp_unit == Unit.YARD) {
-            if (temp_unit == Unit.INCH) {
-                length = new Length(this.value * 36, temp_unit);
-            } else if (temp_unit == Unit.FOOT) {
-                length = new Length(this.value * 3, temp_unit);
+        if (this.unit == Unit.YARD) {
+            if (unit == Unit.INCH) {
+                length = new Length(this.value * 36, unit);
+            } else if (unit == Unit.FOOT) {
+                length = new Length(this.value * 3, unit);
             }
         }
 
-        if (this.temp_unit == Unit.INCH) {
-            if (temp_unit == Unit.FOOT) {
-                length = new Length(this.value / 12, temp_unit);
-            } else if (temp_unit == Unit.YARD) {
-                length = new Length(this.value / 36, temp_unit);
+        if (this.unit == Unit.INCH) {
+            if (unit == Unit.FOOT) {
+                length = new Length(this.value / 12, unit);
+            } else if (unit == Unit.YARD) {
+                length = new Length(this.value / 36, unit);
             }
         }
 
@@ -40,7 +40,7 @@ public class Length {
         return this.value;
     }
 
-    public Unit getTemp_unit() {
-        return temp_unit;
+    public Unit getUnit() {
+        return unit;
     }
 }
