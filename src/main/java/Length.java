@@ -11,11 +11,15 @@ public class Length {
     }
 
     public Length as(String targetUnit) {
+        return as_temp(targetUnit, getTargetUnit(targetUnit));
+    }
+
+    public Unit getTargetUnit(String targetUnit) {
         Unit temp_unit = null;
         if (targetUnit.equals(FOOT)) temp_unit = Unit.FOOT;
         if (targetUnit.equals(YARD)) temp_unit = Unit.YARD;
         if (targetUnit.equals(INCH)) temp_unit = Unit.INCH;
-        return as_temp(targetUnit, temp_unit);
+        return temp_unit;
     }
 
     public Length as_temp(String targetUnit, Unit temp_unit) {
