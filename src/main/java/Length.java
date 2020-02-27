@@ -1,4 +1,7 @@
 public class Length {
+    public static final String F = "f";
+    public static final String YARD = "yard";
+    public static final String INCH = "inch";
     private final double value;
     private final String unit;
 
@@ -9,26 +12,26 @@ public class Length {
 
     public Length as(String targetUnit) {
         Length length = this;
-        if (this.unit.equals("f")) {
-            if (targetUnit.equals("yard")) {
+        if (this.unit.equals(F)) {
+            if (targetUnit.equals(YARD)) {
                 length = new Length(this.value / 3, targetUnit);
-            } else if (targetUnit.equals("inch")) {
+            } else if (targetUnit.equals(INCH)) {
                 length = new Length(this.value * 12, targetUnit);
             }
         }
 
-        if (this.unit.equals("yard")) {
-            if (targetUnit.equals("inch")) {
+        if (this.unit.equals(YARD)) {
+            if (targetUnit.equals(INCH)) {
                 length = new Length(this.value * 36, targetUnit);
-            } else if (targetUnit.equals("f")){
+            } else if (targetUnit.equals(F)){
                 length = new Length(this.value * 3, targetUnit);
             }
         }
 
-        if (this.unit.equals("inch")) {
-            if (targetUnit.equals("f")) {
+        if (this.unit.equals(INCH)) {
+            if (targetUnit.equals(F)) {
                 length = new Length(this.value / 12, targetUnit);
-            } else if (targetUnit.equals("yard")) {
+            } else if (targetUnit.equals(YARD)) {
                 length = new Length(this.value / 36, targetUnit);
             }
         }
