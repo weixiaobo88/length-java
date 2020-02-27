@@ -8,6 +8,11 @@ public class Length {
     }
 
     public Length as(Unit unit) {
+        double value = calculate(unit);
+        return new Length(value, unit);
+    }
+
+    private double calculate(Unit unit) {
         double value = this.value;
         if (this.unit == Unit.FOOT) {
             if (unit == Unit.YARD) {
@@ -32,8 +37,7 @@ public class Length {
                 value = this.value / 36;
             }
         }
-
-        return new Length(value, unit);
+        return value;
     }
 
     public double getValue() {
