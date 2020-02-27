@@ -4,13 +4,19 @@ public class Length {
     public static final String INCH = "inch";
     private final double value;
     private final String unit;
+    private Unit temp_unit;
 
     public Length(double value, String unit) {
-        this.value = value;
-        this.unit = unit;
+        this(value, unit, getTargetUnit(unit));
     }
 
-    public Unit getTargetUnit(String targetUnit) {
+    public Length(double value, String unit, Unit temp_unit) {
+        this.value = value;
+        this.unit = unit;
+        this.temp_unit = temp_unit;
+    }
+
+    public static Unit getTargetUnit(String targetUnit) {
         Unit temp_unit = null;
         if (targetUnit.equals(FOOT)) temp_unit = Unit.FOOT;
         if (targetUnit.equals(YARD)) temp_unit = Unit.YARD;
@@ -53,5 +59,9 @@ public class Length {
 
     public String getUnit() {
         return this.unit;
+    }
+
+    public Unit getTemp_unit() {
+        return temp_unit;
     }
 }
